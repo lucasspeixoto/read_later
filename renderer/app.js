@@ -55,6 +55,7 @@ addItem.addEventListener('click', () => {
 //Listen for new item from main process
 ipcRenderer.on('new-item-sucess', (e, newItem) => {
     console.log(newItem)
+    
     //Enable the buttons
     toggleModalButtons()
 
