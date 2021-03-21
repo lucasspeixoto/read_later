@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+    <title>Read Later</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+
+    <header>
+      <button id="add_url">+</button>
+      <input type="text" id="search" placeholder="Buscar">
+    </header>
+
+    <main>
+      <p id="no-items">Sem itens</p>
+      <div id="urls"></div>
+    </main>
+    <script>
+      // You can also require other files to run in this process
+      require('./app')
+    </script>
+  </body>
+</html>
