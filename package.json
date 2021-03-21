@@ -14,13 +14,17 @@
     "url": "git+https://github.com/lucasspeixoto/read_later.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lucas Peixoto",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lucasspeixoto/read_later/issues"
   },
   "homepage": "https://github.com/lucasspeixoto/read_later#readme",
   "devDependencies": {
-    "electron": "^12.0.1"
+    "electron": "^12.0.1",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "electron-window-state": "^5.0.3"
   }
 }
