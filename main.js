@@ -1,8 +1,16 @@
 
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const windowStateKeepr = require('electron-window-state')
 
 let mainWindow
+
+//Listen for new item request
+ipcMain.on('new-item', (e, itemURL) => {
+    //Get new item and send back to renderer
+    setTimeout(() => {
+        e.sender.send('new-item-sucess', itemURL)
+    }, 2000)
+})
 
 function createWindow() {
 
@@ -13,7 +21,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         x: state.x, y: state.y,
         width: state.width, height: state.height,
-        minWidth: 350, maxWidth:650, minHeight:300,
+        minWidth: 350, maxWidth: 650, minHeight: 300,
         icon: __dirname + './images/icon.ico',
         webPreferences: {
             nodeIntegration: true,
