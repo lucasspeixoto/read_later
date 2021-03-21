@@ -21,7 +21,11 @@ function createWindow() {
         }
     })
 
+    //Load main.html in the BrowserWindow
     mainWindow.loadFile('renderer/main.html')
+
+    //Manage new window state
+    state.manage(mainWindow)
 
     mainWindow.webContents.openDevTools();
 
