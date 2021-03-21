@@ -1,0 +1,26 @@
+{
+  "name": "read_later",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "nodemon --exec electron .",
+    "reset": "git reset --hard",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasspeixoto/read_later.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasspeixoto/read_later/issues"
+  },
+  "homepage": "https://github.com/lucasspeixoto/read_later#readme",
+  "devDependencies": {
+    "electron": "^12.0.1"
+  }
+}
