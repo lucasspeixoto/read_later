@@ -12,6 +12,25 @@ let showModal = document.getElementById('show-modal'),
     addItem = document.getElementById('add-item'),
     itemUrl = document.getElementById('url')
 
+//Disable & Enable modal buttons
+const toggleModalButtons = () => {
+
+    //Check state of buttons
+    if (addItem.disabled === true) {
+        addItem.disabled = false
+        addItem.style.opacity = 1
+        addItem.innerText = 'Adicionar URL'
+        //Hide Cancel button
+        closeModal.style.display = 'inline'
+    } else {
+        addItem.disabled = true
+        addItem.style.opacity = 0.5
+        addItem.innerText = 'Adicionando...'
+        //Hide Cancel button
+        closeModal.style.display = 'none'
+    }
+}
+
 // Show modal
 showModal.addEventListener('click', () => {
     modal.style.display = 'flex'
@@ -27,18 +46,33 @@ closeModal.addEventListener('click', () => {
 addItem.addEventListener('click', () => {
     //Check a url exists
     if (itemUrl.value) {
-        console.log(itemUrl.value)
-        ipcRenderer.send('new-item', itemUrl.value)
+        ipcRenderer.send('new-item', itemUrl.value) //Waiting 2s
+        //Disable the buttons
+        toggleModalButtons()
     }
 })
 
 //Listen for new item from main process
 ipcRenderer.on('new-item-sucess', (e, newItem) => {
     console.log(newItem)
+    //Enable the buttons
+    toggleModalButtons()
+
+    //Hide modal and clear the value
+    modal.style.display = 'none'
+    itemUrl.value = ''
 })
 
-// Liste for keyboard submition
+//Listen for keyboard submition
 itemUrl.addEventListener('keyup', e => {
     //Entrar com o item ao apertar enter
     if (e.key === 'Enter') addItem.click()
 })
+
+
+
+
+
+
+
+

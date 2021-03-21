@@ -8,7 +8,7 @@ let mainWindow
 ipcMain.on('new-item', (e, itemURL) => {
     //Get new item and send back to renderer
     setTimeout(() => {
-        e.sender.send('new-item-sucess', itemURL)
+        e.sender.send('new-item-sucess', 'New Item from main process')
     }, 2000)
 })
 
