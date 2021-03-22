@@ -7,6 +7,7 @@ let mainWindow
 
 //Listen for new item request
 ipcMain.on('new-item', (e, itemURL) => {
+
     //Get new item and send back to renderer
     readItem(itemURL, item => {
         e.sender.send('new-item-sucess', item)
@@ -17,12 +18,14 @@ function createWindow() {
 
     //win state Keeper
     let state = windowStateKeepr({
-        defaultWidth: 500, defaultHeight: 650
+        defaultWidth: 550, defaultHeight: 600
     })
+
+    //Start BrowserWindow
     mainWindow = new BrowserWindow({
         x: state.x, y: state.y,
         width: state.width, height: state.height,
-        minWidth: 350, maxWidth: 650, minHeight: 300,
+        minWidth: 350, maxWidth: 600, minHeight: 300,
         icon: __dirname + './images/icon.ico',
         webPreferences: {
             nodeIntegration: true,
