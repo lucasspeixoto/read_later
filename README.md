@@ -1,6 +1,9 @@
 ## Descriptions
 
-An app building with Electron to save links an see in future in the app window
+App to save website links for future reading. Developed with the help of udemy's Ray Viljoen course - Master Electron: Desktop Apps with HTML, JavaScript & CSS:  [HERE](https://www.udemy.com/course/master-electron/#instructor-1).
+
+#### Interface
+![interface](images/layout.png "Sistema")
 
 ## Installation
 
