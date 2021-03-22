@@ -57,7 +57,7 @@ addItem.addEventListener('click', () => {
 ipcRenderer.on('new-item-sucess', (e, newItem) => {
     
     //Add new item to itens node
-    items.addItem(newItem)
+    items.addItem(newItem, true)
 
 
     //Enable the buttons
