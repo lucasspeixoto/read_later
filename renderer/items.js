@@ -9,7 +9,7 @@ exports.save = () => {
     localStorage.setItem('readit-items', JSON.stringify(this.storage)) //To storage localy in a session we neeed a string, not object
 }
 
-// Set item as selected
+//Set item as selected
 exports.select = e => {
 
     //Remove currently selected item class | selected item: document.getElementsByClassName('read-item selected')[0]
@@ -34,9 +34,26 @@ exports.changeSelection = direction => {
         currentItem.classList.remove('selected')
         currentItem.nextElementSibling.classList.add('selected')
     }
-
 }
 
+//Open selected item
+exports.open = () => {
+
+    //Check if exists item
+    if (!this.storage.length) {
+        return
+    } else {
+
+    //Get selected item
+    let selectedItem = document.getElementsByClassName('read-item selected')[0]
+
+    //Get selected item url
+    let selectedUrl = selectedItem.dataset.url
+
+    console.log('Opening item: ', selectedUrl)
+
+    }
+}
 
 //Add new item
 exports.addItem = (item, isNew = false) => {
@@ -47,6 +64,9 @@ exports.addItem = (item, isNew = false) => {
     //Assign 'read-item' class
     itemNode.setAttribute('class', 'read-item')
 
+    //set item url as data attribute
+    itemNode.setAttribute('data-url', item.url)
+
     //Add inner HTML
     itemNode.innerHTML = `<img src="${item.screenshot}"><h2>${item.title}</h2>`
 
@@ -55,6 +75,9 @@ exports.addItem = (item, isNew = false) => {
 
     //Attach click handler to select
     itemNode.addEventListener('click', this.select)
+
+    //Attach doubleclick handler to open
+    itemNode.addEventListener('dblclick', this.open)
 
     //if this is the first item, select it
     if (document.getElementsByClassName('read-item').length === 1) {
