@@ -1,5 +1,14 @@
+//Modules
+const fs = require('fs')
+
 //DOM nodes
 let items = document.getElementById('items')
+
+//Get readerJS content
+let readerJS
+fs.readFile(`${__dirname}/reader.js`, (err, data) => {
+    readerJS = data.toString()
+})
 
 //Track items in storage
 exports.storage = JSON.parse(localStorage.getItem('readit-items')) || []
@@ -50,8 +59,21 @@ exports.open = () => {
     //Get selected item url
     let selectedUrl = selectedItem.dataset.url
 
-    console.log('Opening item: ', selectedUrl)
+    //Open item in proxy window
+    /*let readerWindow = window.open(selectedUrl, '')  Aqui, essa janela criada é uma janela
+    com as mesmas propriedades da nossa main window, dimensões, e com o nodeIntegration true*/
+    let readerWindow = window.open(selectedUrl, '', `
+        maxWidth=2000,
+        maxHeight=2000,
+        width=1200,
+        height=800,
+        backgroundColor=#DEDEDE,
+        nodeIntegration=0,
+        contextIsolation=1
+    `)
 
+    //Inject JavaScript
+    readerWindow.eval(readerJS)
     }
 }
 
