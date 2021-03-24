@@ -1,5 +1,6 @@
 //Modules
 const { throws } = require('assert')
+const { shell } = require('electron')
 const fs = require('fs')
 
 //DOM nodes
@@ -99,6 +100,27 @@ exports.changeSelection = direction => {
         currentItem.node.nextElementSibling.classList.add('selected')
     }
 }
+
+//Open Selected item in the native browser
+exports.openNative = () => {
+
+    //Check if exists item
+    if (!this.storage.length) {
+        return
+    } else {
+
+        //Get selected item
+        let selectedItem = this.getSelectedItem()
+
+        //Get selected item url
+        let selectedUrl = selectedItem.node.dataset.url
+
+        //Open the the user's default browser system
+        shell.openExternal(selectedUrl)
+
+    } 
+}
+
 
 //Open selected item
 exports.open = () => {

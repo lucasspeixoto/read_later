@@ -14,6 +14,29 @@ let showModal = document.getElementById('show-modal'),
     itemUrl = document.getElementById('url'),
     search = document.getElementById('search')
 
+
+//Open modal from menu
+ipcRenderer.on('menu-show-modal', () => {
+    showModal.click()
+})
+//Open selected item from menu
+ipcRenderer.on('menu-open-item', () => {
+    items.open()
+})
+//Delete selected item from menu
+ipcRenderer.on('menu-delete-item', () => {
+    let selectedItem = items.getSelectedItem()
+    items.delete(selectedItem.index)
+}) 
+//Open the url in the browser
+ipcRenderer.on('menu-open-item-native', () => {
+    items.openNative()
+})
+//Open modal from menu
+ipcRenderer.on('menu-focus-search', () => {
+    search.focus()
+})
+
 //Filter items with "search"
 search.addEventListener('keyup', e => {
 
