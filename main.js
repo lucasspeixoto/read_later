@@ -1,6 +1,5 @@
-
 const { app, BrowserWindow, ipcMain } = require('electron')
-const windowStateKeepr = require('electron-window-state')
+const windowStateKeeper = require('electron-window-state')
 const readItem = require('./readItem')
 
 let mainWindow
@@ -17,8 +16,8 @@ ipcMain.on('new-item', (e, itemURL) => {
 function createWindow() {
 
     //win state Keeper
-    let state = windowStateKeepr({
-        defaultWidth: 550, defaultHeight: 600
+    let state = windowStateKeeper({
+        defaultWidth: 500, defaultHeight: 600
     })
 
     //Start BrowserWindow
