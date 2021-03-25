@@ -7,12 +7,10 @@
     "start": "electron .",
     "watch": "nodemon --exec electron .",
     "reset": "git reset --hard",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "electron-builder -w",
+    "release": "electron-builder -w -p 'onTagOrDraft'"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lucasspeixoto/read_later.git"
-  },
+  "repository": "https://github.com/lucasspeixoto/read_later",
   "keywords": [],
   "author": "Lucas Peixoto",
   "license": "ISC",
@@ -22,9 +20,17 @@
   "homepage": "https://github.com/lucasspeixoto/read_later#readme",
   "devDependencies": {
     "electron": "^12.0.1",
+    "electron-builder": "^22.10.5",
     "nodemon": "^2.0.7"
   },
   "dependencies": {
+    "electron-log": "^4.3.2",
+    "electron-updater": "^4.3.8",
     "electron-window-state": "^5.0.3"
+  },
+  "build": {
+    "publish": {
+      "provider": "github"
+    }
   }
 }

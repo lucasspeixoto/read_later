@@ -1,5 +1,4 @@
 //Modules
-const { throws } = require('assert')
 const { shell } = require('electron')
 const fs = require('fs')
 
